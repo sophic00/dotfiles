@@ -1,0 +1,151 @@
+{
+  "context_servers": {
+    
+  },
+  "language_models": {
+    "copilot_chat": {
+      "api_url": "https://api.githubcopilot.com/chat/completions",
+      "auth_url": "https://api.github.com/copilot_internal/v2/token",
+      "models_url": "https://api.githubcopilot.com/models"
+    }
+  },
+  "edit_predictions": {
+    "mode": "subtle",
+    "copilot": {
+      "proxy": null,
+      "proxy_no_verify": null
+    },
+    "enabled_in_text_threads": false
+  },
+  "show_edit_predictions": false,
+  "agent": {
+    "always_allow_tool_actions": true,
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5"
+    },
+    "default_profile": "write",
+    "dock": "right",
+    "model_parameters": [],
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5.2"
+    }
+  },
+  "tab_bar": {
+    "show": true
+  },
+  "vim_mode": true,
+  "vim": {
+    "toggle_relative_line_numbers": true
+  },
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false
+  },
+  "theme": {
+    "mode": "dark",
+    "light": "Tokyo Night",
+    "dark": "Tokyo Night"
+  },
+  "icon_theme": "Zed (Default)",
+  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_size": 16,
+  "buffer_font_weight": 400,
+  "buffer_font_features": {
+    "liga": true, // Enable ligatures (e.g., ->, =>, ===)
+    "calt": true, // Contextual alternates: colon alignment between digits
+    "zero": true, // Slashed zero (disambiguates from 'O')
+    // "frac": true, // Makes fractions look better (e.g., 1/2 → ½)
+    // "ss01": true,
+    "ss02": true, // Closed construction: livelier rhythm, good for coding
+    // "ss19": true, // Adds gaps in ≠, ==, === ligatures — easier to distinguish
+    "ss20": true, // Align 'f' stroke with x-height for better line alignment
+    "cv03": true, // Complex 'g' – improves legibility
+    "cv04": true, // Curly descender on 'j' – stylish but clear
+    "cv06": true, // Shorter leg on 'm' – makes it cleaner in tight text
+    "cv14": true, // Broken bar in '$' – useful for distinguishing
+    // "cv15": true, // Alternative ampersand '&' – more distinguishable
+    "cv16": true, // 'Q' with bent tail – helps tell apart from 'O'
+    "cv17": true, // Curly ascender 'f' – adds style and clarity
+    "cv19": true // Older '8' – more symmetric and open
+  },
+  "ui_font_size": 16,
+  "ui_font_family": "JetBrains Mono",
+  "auto_install_extensions": {},
+  "restore_on_startup": "none",
+  "auto_update": false,
+  "buffer_font_fallbacks": ["MonoLisa Variable", "FiraCode Nerd Font"],
+  "centered_layout": {
+    "left_padding": 0.0,
+    "right_padding": 0.0
+  },
+  "tabs": {
+    "close_position": "right",
+    "file_icons": true,
+    "git_status": true,
+    "activate_on_close": "history",
+    "show_close_button": "hover",
+    "show_diagnostics": "all"
+  },
+  "diagnostics": {
+    "inline": {
+      "enabled": false,
+      "update_debounce_ms": 150,
+      "padding": 4,
+      "min_column": 0,
+      "max_severity": null
+    }
+  },
+  "git": {
+    "git_gutter": "tracked_files",
+    "gutter_debounce": 100,
+    "inline_blame": {
+      "enabled": true,
+      "show_commit_summary": true
+    },
+    "hunk_style": "staged_hollow"
+  },
+  "terminal": {
+    "font_family": "CaskaydiaMono Nerd Font",
+    "font_size": 16,
+    "env": {
+      "EDITOR": "zed --wait"
+    }
+  },
+  "format_on_save": "on",
+  "file_types": {
+    "Dockerfile": ["Dockerfile", "Dockerfile.*"],
+    "JSON": ["json", "jsonc", "*.code-snippets"]
+  },
+  "lsp": {
+    "wakatime": {
+      "initialization_options": {
+        "api-key": "haha get your own key :) "
+      }
+    }
+  },
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true
+  },
+  "languages": {
+    "Python": {
+      // "language_servers": ["ruff"],
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+          // ,"code_actions": {
+          //   "source.fixAll.ruff": true,
+          //   "source.organizeImports.ruff": true
+          // }
+        }
+      ]
+    }
+  }
+}
