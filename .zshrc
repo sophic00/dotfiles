@@ -4,6 +4,19 @@ DISABLE_AUTO_UPDATE="true"
 DISABLE_MAGIC_FUNCTIONS="true"
 DISABLE_COMPFIX="true"
 
+typeset -U path
+
+path=(
+  "$HOME/.config/emacs/bin"
+  "$HOME/.cargo/bin"
+  "$HOME/.local/share/pnpm"
+  "$HOME/go/bin"
+  "$HOME/.zvm/bin"
+  "$HOME/.zvm/self"
+  $path  
+)
+
+export PATH
 # --- ZSH optmizations ---
 autoload -Uz compinit
 # Check if .zcompdump was created today. If not, regenerate it.
@@ -14,12 +27,10 @@ else
   compinit -C
 fi
 # --- END OF CODE ---
-
 export ZSH="$HOME/.oh-my-zsh"
-export PATH="$HOME/.config/emacs/bin:$PATH"
 ZSH_THEME=""
 
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git docker web-search zsh-autosuggestions zsh-syntax-highlighting fzf fzf-tab)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -54,8 +65,7 @@ fi
 . "$HOME/.cargo/env"
 eval "$(gh copilot alias -- zsh)"
 
-# Source all files in ~/.zshrc.d
-for rcfile in /home/vaibhav/.config/zshrc/*.zsh; do
+for rcfile in "$HOME/.config/zshrc"/*.zsh(N); do
   source "$rcfile"
 done
 
@@ -101,19 +111,6 @@ conda() {
  [[ ! -r '/home/vaibhav/.opam/opam-init/init.zsh' ]] || source '/home/vaibhav/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
 
-# pnpm
-export PNPM_HOME="/home/vaibhav/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# ZVM
-export ZVM_INSTALL="$HOME/.zvm/self"
-export PATH="$PATH:$HOME/.zvm/bin"
-export PATH="$PATH:$ZVM_INSTALL/"
-
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 source <(COMPLETE=zsh jj)
@@ -124,8 +121,6 @@ source <(COMPLETE=zsh jj)
 eval "$(direnv hook zsh)"
 
 
-# Path to binary installed using golang
-export PATH="$PATH:$HOME/go/bin"
 
 # leetcode cli completions
 if command -v leetcode >/dev/null 2>&1; then
@@ -161,4 +156,7 @@ omzplug_update() {
   done
   echo "Custom plugins update complete."
 }
+
+# fzf-tag enable
+enable-fzf-tab
 # zprof
